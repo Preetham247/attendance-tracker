@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Welcome {{ session['user'] }}</h2>
+
+    <!-- ✅ ADD ATTENDANCE FORM -->
+    <form method="POST">
+
+        <!-- SUBJECT DROPDOWN -->
+        <select name="subject" required>
+            <option value="">Select Subject</option>
+
+            {% for sub in subjects %}
+                <option>{{ sub }}</option>
+            {% endfor %}
+        </select>
+
+        <!-- STATUS -->
+        <select name="status" required>
+            <option value="">Status</option>
+            <option>Present</option>
+            <option>Absent</option>
+        </select>
+
+        <button type="submit">Add Attendance</button>
+
+    </form>
+
+    <br>
+
+    <!-- ✅ BUTTONS -->
+    <div>
+        <a href="/graph"><button type="button">📊 View Graph</button></a>
+        <a href="/logout"><button type="button">🚪 Logout</button></a>
+    </div>
+
+    <!-- ✅ WEEKLY SUMMARY -->
+    <h3>Weekly Attendance</h3>
+
+    <table>
+        <tr>
+            <th>Subject</th>
+            <th>Present</th>
+            <th>Total</th>
+            <th>%</th>
+            <th>Status</th>
+        </tr>
+
+        {% for subject, data in summary.items() %}
+        <tr>
+            <td>{{ subject }}</td>
+            <td>{{ data.present }}</td>
+            <td>{{ data.total }}</td>
+            <td>{{ (data.present / data.total * 100) | round(2) }}%</td>
+
+            {% if (data.present / data.total * 100) < 75 %}
+                <td style="color:red;">⚠️ Low</td>
+            {% else %}
+                <td style="color:lightgreen;">Good</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    <!-- ✅ DAILY RECORDS -->
+    <h3>Daily Records</h3>
+
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Day</th>
+            <th>Subject</th>
+            <th>Status</th>
+        </tr>
+
+        {% for r in records %}
+        <tr>
+            <td>{{ r.date }}</td>
+            <td>{{ r.day }}</td>
+            <td>{{ r.subject }}</td>
+            <td>{{ r.status }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</div>
+
+</body>
+</html>

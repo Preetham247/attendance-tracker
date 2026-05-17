@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance Graph</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>📊 Attendance Graph</h2>
+
+    <img src="{{ url_for('static', filename='graph.png') }}" width="100%">
+
+    <br><br>
+
+    <a href="/dashboard">
+        <button>⬅ Back to Dashboard</button>
+    </a>
+
+    <a href="/logout">
+        <button>🚪 Logout</button>
+    </a>
+
+</div>
+
+</body>
+</html>

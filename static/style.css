@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+
+    background: url('/static/bg.jpg') no-repeat center center/cover;
+    height: 100vh;
+    color: white;
+}
+
+/* Center container */
+.container {
+    width: 350px;
+    margin: auto;
+    margin-top: 80px;
+    padding: 30px;
+
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+
+    backdrop-filter: blur(10px);
+
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Inputs */
+input, select {
+    width: 90%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+/* Button */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #00c6ff, #0072ff);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(45deg, #ff6ec4, #7873f5);
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Table */
+table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+td, th {
+    padding: 8px;
+    text-align: center;
+}
