@@ -19,3 +19,4 @@ A simple web app to track daily attendance per subject and calculate percentage.
 3. Open localhost
 
 ## Screenshots
+https://github.com/Preetham247/attendance-tracker/issues
